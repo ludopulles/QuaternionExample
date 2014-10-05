@@ -8,7 +8,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class ComplexNumber {
 
-	private float a, b;
+	private double a, b;
 
 	public ComplexNumber() {
 		this(1, 0);
@@ -18,36 +18,36 @@ public class ComplexNumber {
 		this(z.a, z.b);
 	}
 
-	public ComplexNumber(float a, float b) {
+	public ComplexNumber(double a, double b) {
 		this.a = a;
 		this.b = b;
 	}
 
 	public ComplexNumber add(ComplexNumber z) {
-		float newA = this.a + z.a;
-		float newB = this.b + z.b;
+		double newA = a + z.a;
+		double newB = b + z.b;
 		return new ComplexNumber(newA, newB);
 	}
 
 	public ComplexNumber subtract(ComplexNumber z) {
-		float newA = this.a - z.a;
-		float newB = this.b - z.b;
+		double newA = a - z.a;
+		double newB = b - z.b;
 		return new ComplexNumber(newA, newB);
 	}
 
 	public ComplexNumber multiply(ComplexNumber z) {
-		float newA = this.a * z.a - this.b * z.b;
-		float newB = this.a * z.b + this.b * z.a;
+		double newA = a * z.a - b * z.b;
+		double newB = a * z.b + b * z.a;
 		return new ComplexNumber(newA, newB);
 	}
 
-	public void draw() {
-		GL11.glVertex2f(this.a, this.b);
+	public static ComplexNumber fromPolar(double r, double theta) {
+		double a = r * Math.cos(theta);
+		double b = r * Math.sin(theta);
+		return new ComplexNumber(a, b);
 	}
 
-	public static ComplexNumber fromPolar(float r, float theta) {
-		float a = (float) (r * Math.cos(theta));
-		float b = (float) (r * Math.sin(theta));
-		return new ComplexNumber(a, b);
+	public void draw() {
+		GL11.glVertex2d(a, b);
 	}
 }

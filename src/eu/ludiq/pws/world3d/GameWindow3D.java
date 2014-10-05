@@ -10,7 +10,7 @@ import eu.ludiq.pws.world3d.Cube.Axis;
 
 public class GameWindow3D extends GameWindow {
 
-	private static final float ROTATION_SPEED = (float) (Math.PI / 60);
+	private static final double ROTATION_SPEED = Math.PI / 60;
 	private Cube cube;
 
 	public GameWindow3D() throws LWJGLException {
@@ -24,7 +24,7 @@ public class GameWindow3D extends GameWindow {
 	@Override
 	protected void init(int width, int height) {
 		// init cube
-		float size = 1f / (float) Math.sqrt(2);
+		double size = 1d / Math.sqrt(2);
 		this.cube = new Cube(new Point3D(0, 0, 0), size);
 
 		// init opengl 3D

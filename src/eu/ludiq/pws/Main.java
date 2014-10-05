@@ -11,7 +11,7 @@ import eu.ludiq.pws.world3d.GameWindow3D;
 public class Main {
 
 	public static void main(String[] args) {
-		boolean fullscreen = true;
+		boolean fullscreen = false;
 
 		String message = "Do you want 2D or 3D space?";
 		String title = "2D or 3D";

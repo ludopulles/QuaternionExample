@@ -12,7 +12,7 @@ public class Square {
 	private Color[] colors = new Color[] { Color.RED, Color.GREEN, Color.BLUE,
 			Color.WHITE };
 
-	public Square(ComplexNumber center, float size) {
+	public Square(ComplexNumber center, double size) {
 		this.center = center;
 		this.rotation = new ComplexNumber();
 

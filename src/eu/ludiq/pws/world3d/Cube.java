@@ -37,7 +37,7 @@ public class Cube {
 	private Point3D[] rotationAxes;
 	private Color[] rotationColors;
 
-	public Cube(Point3D center, float size) {
+	public Cube(Point3D center, double size) {
 		this.center = center;
 		this.rotation = new Quaternion();
 
@@ -60,14 +60,17 @@ public class Cube {
 				Color.YELLOW };
 	}
 
-	public void addRotation(Axis axis, float rotationSpeed) {
+	public void addRotation(Axis axis, double rotationSpeed) {
 		Point3D rotationAxis = this.rotationAxes[axis.getIndex()];
 		rotationAxis = rotationAxis.toQuaternion().rotate(this.rotation)
 				.toPoint();
 		Quaternion rotation2 = rotationAxis.createQuaternion(rotationSpeed);
 
-		// not commutative
+		// q'=  q_2 * q_1
+		// in which q' corresponds to the rotation q_1 followed by the rotation q_2.
 		this.rotation = rotation2.multiply(this.rotation);
+		
+		// length must be one
 		this.rotation.normalize();
 	}
 
@@ -99,9 +102,9 @@ public class Cube {
 				// h' = q * h * q^-1
 				h = h.rotate(this.rotation);
 
-				Point3D pAccent = h.toPoint();
-				pAccent = pAccent.add(center);
-				pAccent.draw();
+				p = h.toPoint().add(center);
+				
+				p.draw();
 			}
 		}
 		GL11.glEnd();

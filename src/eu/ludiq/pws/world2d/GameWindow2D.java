@@ -8,7 +8,7 @@ import eu.ludiq.pws.GameWindow;
 
 public class GameWindow2D extends GameWindow {
 
-	private static final float ROTATION_SPEED = (float) (Math.PI / 60);
+	private static final double ROTATION_SPEED = Math.PI / 60;
 
 	private Square square;
 
@@ -24,7 +24,7 @@ public class GameWindow2D extends GameWindow {
 	protected void init(int width, int height) {
 		// init square
 		ComplexNumber squareCenter = new ComplexNumber(width / 2, height / 2);
-		float squareSize = Math.min(width, height) / 2;
+		double squareSize = Math.min(width, height) / 2;
 		this.square = new Square(squareCenter, squareSize);
 
 		// init opengl
